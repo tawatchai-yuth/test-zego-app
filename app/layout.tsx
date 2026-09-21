@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,12 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const notoSansThai = Noto_Sans_Thai({
+  variable: "--font-noto-sans-thai",
+  subsets: ["thai", "latin"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "My Resume",
-    template: "%s | My Resume",
+    default: "APPLICATION FOR EMPLOYMENT",
+    template: "%s | APPLICATION FOR EMPLOYMENT",
   },
-  description: "Personal resume and portfolio application",
 };
 
 export default function RootLayout({
@@ -28,9 +33,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSansThai.variable} min-h-screen antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          storageKey="work-app"
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
