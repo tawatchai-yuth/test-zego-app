@@ -5,8 +5,15 @@ import { Card, CardBody } from "@/components/ui/card";
 import DatePicker from "@/components/ui/date-picker";
 import Input from "@/components/ui/input";
 import Radio from "@/components/ui/radio";
+import Select from "@/components/ui/select";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ThaiAddressSelect } from "@/components/ui/thai-address-select";
+import {
+  nationalityOptions,
+  positionOptions,
+  raceOptions,
+  religionOptions,
+} from "@/feature/job-application/constants/select-options";
 
 const GeneralInformationFrom = () => {
   const [birthDate, setBirthDate] = useState<Date | undefined>();
@@ -15,9 +22,9 @@ const GeneralInformationFrom = () => {
   return (
     <div className="flex flex-col gap-4">
       <SectionTitle>Personal Information (ประวิติส่วนตัว)</SectionTitle>
-      <Card className="border-base-300 border">
-        <CardBody className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <Card>
+        <CardBody className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -51,7 +58,7 @@ const GeneralInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -61,7 +68,12 @@ const GeneralInformationFrom = () => {
                   Position Applied For
                 </span>
               </legend>
-              <Input placeholder="ตำแหน่งที่สมัคร" required />
+              <Select
+                options={positionOptions}
+                placeholder="เลือกตำแหน่งที่สมัคร"
+                defaultValue=""
+                required
+              />
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
@@ -74,7 +86,7 @@ const GeneralInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -106,11 +118,11 @@ const GeneralInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <ThaiAddressSelect required />
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -142,7 +154,7 @@ const GeneralInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -174,7 +186,7 @@ const GeneralInformationFrom = () => {
                 Current Living Situation
               </span>
             </legend>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
               <Radio
                 name="livingSituation"
                 label="อาศัยกับครอบครัว (Living with Family)"
@@ -198,7 +210,7 @@ const GeneralInformationFrom = () => {
             </div>
           </fieldset>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -219,11 +231,16 @@ const GeneralInformationFrom = () => {
                   Race
                 </span>
               </legend>
-              <Input placeholder="เชื้อชาติ" required />
+              <Select
+                options={raceOptions}
+                placeholder="เลือกเชื้อชาติ"
+                defaultValue=""
+                required
+              />
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -233,7 +250,12 @@ const GeneralInformationFrom = () => {
                   Nattionality
                 </span>
               </legend>
-              <Input placeholder="สัญชาติ" required />
+              <Select
+                options={nationalityOptions}
+                placeholder="เลือกสัญชาติ"
+                defaultValue=""
+                required
+              />
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
@@ -244,11 +266,16 @@ const GeneralInformationFrom = () => {
                   Religion
                 </span>
               </legend>
-              <Input placeholder="ศาสนา" required />
+              <Select
+                options={religionOptions}
+                placeholder="เลือกศาสนา"
+                defaultValue=""
+                required
+              />
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -282,7 +309,7 @@ const GeneralInformationFrom = () => {
                 Military status
               </span>
             </legend>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
               <Radio
                 name="militaryStatus"
                 label="ได้รับการยกเว้น (Exempted)"
@@ -310,7 +337,7 @@ const GeneralInformationFrom = () => {
                 Marital status
               </span>
             </legend>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
               <Radio name="maritalStatus" label="โสด (Single)" required />
               <Radio name="maritalStatus" label="แต่งงาน (Married)" required />
               <Radio name="maritalStatus" label="หม้าย (Widowed)" required />
@@ -331,7 +358,7 @@ const GeneralInformationFrom = () => {
                 Sex
               </span>
             </legend>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
               <Radio name="sex" label="ชาย (Male)" required />
               <Radio name="sex" label="หญิง (Female)" required />
             </div>

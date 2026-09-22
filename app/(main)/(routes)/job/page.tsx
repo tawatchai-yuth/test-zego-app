@@ -7,7 +7,7 @@ import WorkingInformationFrom from "@/feature/job-application/components/working
 
 const JobPage = () => {
   return (
-    <Container className="flex flex-col gap-8 py-8 sm:py-12">
+    <Container className="flex flex-col gap-10 py-10 sm:py-16">
       <HeaderInformation />
       <GeneralInformationFrom />
       <FamilyInformationFrom />

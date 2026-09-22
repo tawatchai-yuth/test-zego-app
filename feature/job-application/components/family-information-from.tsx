@@ -4,7 +4,9 @@ import { useRef, useState } from "react";
 import { Card, CardBody } from "@/components/ui/card";
 import Input from "@/components/ui/input";
 import { SectionTitle } from "@/components/ui/section-title";
+import Select from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
+import { occupationOptions } from "@/feature/job-application/constants/select-options";
 
 const FamilyInformationFrom = () => {
   const [siblingRows, setSiblingRows] = useState<number[]>([0, 1, 2]);
@@ -21,9 +23,9 @@ const FamilyInformationFrom = () => {
   return (
     <div className="flex flex-col gap-4">
       <SectionTitle>Family Information (ประวัติครอบครัว)</SectionTitle>
-      <Card className="border-base-300 border">
-        <CardBody className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <Card>
+        <CardBody className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -55,10 +57,15 @@ const FamilyInformationFrom = () => {
                   Occupation
                 </span>
               </legend>
-              <Input placeholder="อาชีพ" required />
+              <Select
+                options={occupationOptions}
+                placeholder="เลือกอาชีพ"
+                defaultValue=""
+                required
+              />
             </fieldset>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -90,10 +97,15 @@ const FamilyInformationFrom = () => {
                   Occupation
                 </span>
               </legend>
-              <Input placeholder="อาชีพ" required />
+              <Select
+                options={occupationOptions}
+                placeholder="เลือกอาชีพ"
+                defaultValue=""
+                required
+              />
             </fieldset>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>ชื่อภรรยา/สามี</span>
@@ -123,7 +135,7 @@ const FamilyInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>มีบุตร</span>
@@ -153,7 +165,7 @@ const FamilyInformationFrom = () => {
             </fieldset>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
                 <span>
@@ -205,12 +217,12 @@ const FamilyInformationFrom = () => {
             <Table>
               <thead>
                 <tr>
-                  <th>
+                  <th className="w-14">
                     <div className="flex flex-col gap-0">
                       <span>ลำดับ</span>
                     </div>
                   </th>
-                  <th>
+                  <th className="min-w-48">
                     <div className="flex flex-col gap-0">
                       <span>ชื่อ - นามสกุล</span>
                       <span className="text-base-content/60 text-xs font-normal">
@@ -218,7 +230,7 @@ const FamilyInformationFrom = () => {
                       </span>
                     </div>
                   </th>
-                  <th>
+                  <th className="min-w-24">
                     <div className="flex flex-col gap-0">
                       <span>อายุ</span>
                       <span className="text-base-content/60 text-xs font-normal">
@@ -226,7 +238,7 @@ const FamilyInformationFrom = () => {
                       </span>
                     </div>
                   </th>
-                  <th>
+                  <th className="min-w-40">
                     <div className="flex flex-col gap-0">
                       <span>อาชีพ</span>
                       <span className="text-base-content/60 text-xs font-normal">
@@ -234,7 +246,7 @@ const FamilyInformationFrom = () => {
                       </span>
                     </div>
                   </th>
-                  <th />
+                  <th className="w-12" />
                 </tr>
               </thead>
               <tbody>
@@ -248,7 +260,11 @@ const FamilyInformationFrom = () => {
                       <Input type="number" placeholder="อายุ" suffix="ปี" />
                     </td>
                     <td>
-                      <Input placeholder="อาชีพ" />
+                      <Select
+                        options={occupationOptions}
+                        placeholder="เลือกอาชีพ"
+                        defaultValue=""
+                      />
                     </td>
                     <td>
                       <button

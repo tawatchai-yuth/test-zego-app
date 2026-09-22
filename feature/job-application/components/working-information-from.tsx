@@ -1,10 +1,32 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { Card, CardBody } from "@/components/ui/card";
 import Input from "@/components/ui/input";
+import MonthPicker from "@/components/ui/month-picker";
 import { SectionTitle } from "@/components/ui/section-title";
-import { Table } from "@/components/ui/table";
+import Select from "@/components/ui/select";
+import { positionOptions } from "@/feature/job-application/constants/select-options";
+
+const Field = ({
+  label,
+  subLabel,
+  children,
+}: {
+  label: string;
+  subLabel: string;
+  children: ReactNode;
+}) => (
+  <fieldset className="fieldset">
+    <legend className="fieldset-legend flex-col items-start gap-0">
+      <span>{label}</span>
+      <span className="text-base-content/60 text-xs font-normal">
+        {subLabel}
+      </span>
+    </legend>
+    {children}
+  </fieldset>
+);
 
 const WorkingInformationFrom = () => {
   const [rows, setRows] = useState<number[]>([0, 1, 2]);
@@ -24,112 +46,89 @@ const WorkingInformationFrom = () => {
         Working Experience In Chronological (รายละเอียดของงานที่ผ่าน
         เรียงลำดับก่อน-หลัง)
       </SectionTitle>
-      <Card className="border-base-300 border">
-        <CardBody className="flex flex-col gap-4">
-          <Table>
-            <thead>
-              <tr>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>สถานที่ทำงาน</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      Company
+      <Card>
+        <CardBody className="flex flex-col gap-6">
+          {rows.length === 0 && (
+            <p className="text-base-content/50 border-base-300 rounded-box border border-dashed py-8 text-center text-sm">
+              ยังไม่มีประสบการณ์ทำงาน (No work experience added)
+            </p>
+          )}
+
+          {rows.map((id, index) => (
+            <div
+              key={id}
+              className="border-base-300/70 bg-base-200/40 hover:border-primary/40 rounded-box border p-5 transition-colors sm:p-6"
+            >
+              <div className="mb-2 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="bg-primary text-primary-content flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold">
+                    {index + 1}
+                  </span>
+                  <span className="text-sm font-semibold">
+                    ประสบการณ์ทำงานที่ {index + 1}
+                    <span className="text-base-content/60 font-normal">
+                      {" "}
+                      (Experience {index + 1})
                     </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>เริ่ม</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      From
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>ถึง</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      To
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>ตำแหน่ง</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      Position
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>ลักษณะงาน</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      Job description
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>ค้าจ้าง</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      Salary
-                    </span>
-                  </div>
-                </th>
-                <th>
-                  <div className="flex flex-col gap-0">
-                    <span>เหตุที่ออก</span>
-                    <span className="text-base-content/60 text-xs font-normal">
-                      Reasons of resignation
-                    </span>
-                  </div>
-                </th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((id) => (
-                <tr key={id}>
-                  <td>
-                    <Input placeholder="สถานที่ทำงาน" />
-                  </td>
-                  <td>
-                    <Input type="month" />
-                  </td>
-                  <td>
-                    <Input type="month" />
-                  </td>
-                  <td>
-                    <Input placeholder="ตำแหน่ง" />
-                  </td>
-                  <td>
-                    <Input placeholder="ลักษณะงาน" />
-                  </td>
-                  <td>
-                    <Input type="number" placeholder="ค่าจ้าง" />
-                  </td>
-                  <td>
-                    <Input placeholder="เหตุที่ออก" />
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-ghost btn-sm btn-circle"
-                      onClick={() => removeRow(id)}
-                      aria-label="ลบแถว"
-                    >
-                      ✕
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-sm btn-circle hover:text-error"
+                  onClick={() => removeRow(id)}
+                  aria-label={`ลบประสบการณ์ทำงานที่ ${index + 1}`}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
+                <Field label="สถานที่ทำงาน" subLabel="Company">
+                  <Input placeholder="สถานที่ทำงาน" />
+                </Field>
+                <Field label="ตำแหน่ง" subLabel="Position">
+                  <Select
+                    options={positionOptions}
+                    placeholder="เลือกตำแหน่ง"
+                    defaultValue=""
+                  />
+                </Field>
+              </div>
+
+              <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-3">
+                <Field label="เริ่ม" subLabel="From">
+                  <MonthPicker />
+                </Field>
+                <Field label="ถึง" subLabel="To">
+                  <MonthPicker />
+                </Field>
+                <Field label="ค่าจ้าง" subLabel="Salary">
+                  <Input type="number" placeholder="ค่าจ้าง" suffix="บาท" />
+                </Field>
+              </div>
+
+              <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2">
+                <Field label="ลักษณะงาน" subLabel="Job description">
+                  <textarea
+                    className="textarea w-full"
+                    rows={2}
+                    placeholder="ลักษณะงาน"
+                  />
+                </Field>
+                <Field label="เหตุที่ออก" subLabel="Reasons of resignation">
+                  <textarea
+                    className="textarea w-full"
+                    rows={2}
+                    placeholder="เหตุที่ออก"
+                  />
+                </Field>
+              </div>
+            </div>
+          ))}
 
           <button
             type="button"
-            className="btn btn-outline btn-sm w-fit"
+            className="btn btn-outline btn-primary btn-sm w-fit"
             onClick={addRow}
           >
             + เพิ่มประสบการณ์ทำงาน (Add Work Experience)

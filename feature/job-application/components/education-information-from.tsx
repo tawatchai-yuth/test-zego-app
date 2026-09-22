@@ -1,5 +1,6 @@
 import { Card, CardBody } from "@/components/ui/card";
 import Input from "@/components/ui/input";
+import MonthPicker from "@/components/ui/month-picker";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Table } from "@/components/ui/table";
 
@@ -16,12 +17,12 @@ const EducationInformationFrom = () => {
   return (
     <div className="flex flex-col gap-4">
       <SectionTitle>Education (การศึกษา)</SectionTitle>
-      <Card className="border-base-300 border">
+      <Card>
         <CardBody>
           <Table>
             <thead>
               <tr>
-                <th>
+                <th className="min-w-40">
                   <div className="flex flex-col gap-0">
                     <span>ระดับการศึกษา</span>
                     <span className="text-base-content/60 text-xs font-normal">
@@ -29,7 +30,7 @@ const EducationInformationFrom = () => {
                     </span>
                   </div>
                 </th>
-                <th>
+                <th className="min-w-48">
                   <div className="flex flex-col gap-0">
                     <span>สถาบันการศึกษา</span>
                     <span className="text-base-content/60 text-xs font-normal">
@@ -37,7 +38,7 @@ const EducationInformationFrom = () => {
                     </span>
                   </div>
                 </th>
-                <th>
+                <th className="min-w-40">
                   <div className="flex flex-col gap-0">
                     <span>สาขาวิชา</span>
                     <span className="text-base-content/60 text-xs font-normal">
@@ -45,7 +46,7 @@ const EducationInformationFrom = () => {
                     </span>
                   </div>
                 </th>
-                <th>
+                <th className="min-w-32">
                   <div className="flex flex-col gap-0">
                     <span>ตั้งแต่</span>
                     <span className="text-base-content/60 text-xs font-normal">
@@ -53,7 +54,7 @@ const EducationInformationFrom = () => {
                     </span>
                   </div>
                 </th>
-                <th>
+                <th className="min-w-32">
                   <div className="flex flex-col gap-0">
                     <span>ถึง</span>
                     <span className="text-base-content/60 text-xs font-normal">
@@ -81,10 +82,10 @@ const EducationInformationFrom = () => {
                     <Input placeholder="สาขาวิชา" />
                   </td>
                   <td>
-                    <Input type="month" />
+                    <MonthPicker />
                   </td>
                   <td>
-                    <Input type="month" />
+                    <MonthPicker />
                   </td>
                 </tr>
               ))}

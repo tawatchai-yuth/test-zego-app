@@ -6,8 +6,14 @@ export function Table({
   ...props
 }: HTMLAttributes<HTMLTableElement>) {
   return (
-    <div className="overflow-x-auto">
-      <table className={cn("table", className)} {...props} />
+    <div className="border-base-300/60 overflow-x-auto rounded-box border">
+      <table
+        className={cn(
+          "table table-zebra [&_td]:py-4 [&_td]:px-5 [&_th]:py-4 [&_th]:px-5",
+          className,
+        )}
+        {...props}
+      />
     </div>
   );
 }

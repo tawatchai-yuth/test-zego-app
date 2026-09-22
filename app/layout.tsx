@@ -33,10 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSansThai.variable} min-h-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSansThai.variable} bg-base-200 text-base-content min-h-screen antialiased`}
       >
         <ThemeProvider
-          attribute="class"
+          attribute="data-theme"
+          themes={["light", "dark"]}
           defaultTheme="light"
           enableSystem={false}
           storageKey="work-app"

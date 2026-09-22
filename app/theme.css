@@ -1,0 +1,75 @@
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97% 0.003 264);
+  --color-base-300: oklch(93% 0.006 264);
+  --color-base-content: oklch(21% 0.02 264);
+
+  --color-primary: oklch(52% 0.15 155);
+  --color-primary-content: oklch(98% 0.02 155);
+  --color-secondary: oklch(55% 0.07 250);
+  --color-secondary-content: oklch(98% 0.01 250);
+  --color-accent: oklch(70% 0.15 200);
+  --color-accent-content: oklch(20% 0.05 200);
+  --color-neutral: oklch(25% 0.01 264);
+  --color-neutral-content: oklch(95% 0.004 264);
+
+  --color-info: oklch(70% 0.15 230);
+  --color-info-content: oklch(20% 0.05 230);
+  --color-success: oklch(70% 0.15 150);
+  --color-success-content: oklch(20% 0.05 150);
+  --color-warning: oklch(80% 0.18 80);
+  --color-warning-content: oklch(25% 0.06 80);
+  --color-error: oklch(65% 0.22 25);
+  --color-error-content: oklch(97% 0.02 25);
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.625rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(20% 0.015 264);
+  --color-base-200: oklch(17% 0.014 264);
+  --color-base-300: oklch(14% 0.013 264);
+  --color-base-content: oklch(90% 0.01 264);
+
+  --color-primary: oklch(70% 0.16 155);
+  --color-primary-content: oklch(16% 0.03 155);
+  --color-secondary: oklch(70% 0.06 250);
+  --color-secondary-content: oklch(15% 0.02 250);
+  --color-accent: oklch(75% 0.14 200);
+  --color-accent-content: oklch(15% 0.04 200);
+  --color-neutral: oklch(25% 0.01 264);
+  --color-neutral-content: oklch(90% 0.005 264);
+
+  --color-info: oklch(75% 0.14 230);
+  --color-info-content: oklch(15% 0.04 230);
+  --color-success: oklch(75% 0.14 150);
+  --color-success-content: oklch(15% 0.04 150);
+  --color-warning: oklch(82% 0.17 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: oklch(70% 0.2 25);
+  --color-error-content: oklch(15% 0.05 25);
+
+  --radius-selector: 0.75rem;
+  --radius-field: 0.625rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
