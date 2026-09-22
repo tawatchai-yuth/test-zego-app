@@ -82,7 +82,7 @@ const GeneralInformationFrom = () => {
                   Expected Salary
                 </span>
               </legend>
-              <Input type="number" placeholder="เงินเดือน" />
+              <Input type="number" placeholder="เงินเดือน" suffix="บาท" />
             </fieldset>
           </div>
 
@@ -220,7 +220,7 @@ const GeneralInformationFrom = () => {
                   Age
                 </span>
               </legend>
-              <Input type="number" placeholder="อายุ" required />
+              <Input type="number" placeholder="อายุ" suffix="ปี" required />
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">

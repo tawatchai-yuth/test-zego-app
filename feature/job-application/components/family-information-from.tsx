@@ -46,7 +46,7 @@ const FamilyInformationFrom = () => {
                   Age
                 </span>
               </legend>
-              <Input placeholder="อายุ" required />
+              <Input type="number" placeholder="อายุ" suffix="ปี" required />
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
@@ -86,7 +86,7 @@ const FamilyInformationFrom = () => {
                   Age
                 </span>
               </legend>
-              <Input placeholder="อายุ" required />
+              <Input type="number" placeholder="อายุ" suffix="ปี" required />
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex-col items-start gap-0">
@@ -230,7 +230,7 @@ const FamilyInformationFrom = () => {
                       </span>
                     </div>
                   </th>
-                  <th className="min-w-24">
+                  <th className="w-40 min-w-40">
                     <div className="flex flex-col gap-0">
                       <span>อายุ</span>
                       <span className="text-base-content/60 text-xs font-normal">
